@@ -1,0 +1,4 @@
+# 3 hrs self study for preparing the Kubernetes and prepare the interview Questions
+# 3 hrs Evening class
+# 30 Github code push
+

@@ -1,0 +1,42 @@
+# Day 07 - for speed typing
+
+#Jenkins Pipeline - Parametrized
+
+pipeline {
+     agent any
+     parameters {
+         string( name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Deployment Environment'
+	)
+     }
+     environment {
+           Institute_name= "pathnex"
+     }  
+     
+    stages {
+        stage('Checkout') {
+           steps {
+               git url: 'https://github.com/Pathnex/sample-java-app.git'
+           }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying to $ENVIRONMENT by $INSTITUTE_NAME"'
+         }
+       }
+    }
+}
+
+# Gitlab CI - parameterized via Variables
+stages:
+  - deploy
+
+variables:
+   Institute_Name: "Pathnex"
+   Environment: "dev"
+     
+deploy
+  stage: deploy
+  image: alpine:latest
+  scripts:
+    - echo "Deploying to $ENVIRONMENT by $Institute_Name"
+ 
